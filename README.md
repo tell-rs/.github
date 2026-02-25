@@ -42,7 +42,7 @@ Tell collects all five. One data model. Everything queryable together.
 
 ## Performance
 
-<sub>Apple M4 Pro · 12 cores · 5 clients · batch 500</sub>
+Apple M4 Pro · 12 cores · 5 clients · batch 500
 
 ### Ingest throughput (events/sec)
 
@@ -82,7 +82,7 @@ Tell collects all five. One data model. Everything queryable together.
 | Throughput | **64M/s** | ~100K/s | — | 86 MiB/s |
 | Language | **Rust** | Python | — | Rust |
 
-## SDKs <sub>(all open source)</sub>
+## SDKs
 
 | | Language | Install |
 |--|----------|---------|
@@ -90,7 +90,5 @@ Tell collects all five. One data model. Everything queryable together.
 | [**tell-js**](https://github.com/tell-rs/tell-js) | TypeScript | `npm i @tell-rs/tell` |
 | [**tell-go**](https://github.com/tell-rs/tell-go) | Go | `go get tell.rs/sdk` |
 | [**tell-cpp**](https://github.com/tell-rs/tell-cpp) | C++ | Header-only |
-
---- 
 
 Built by the founder of Logpoint (acquired).
