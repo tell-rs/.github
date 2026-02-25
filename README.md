@@ -3,11 +3,6 @@
   <sub>Events, logs, business data — one platform. The full picture.</sub>
 </p>
 
-<p align="center">
-  <a href="https://tell.rs">tell.rs</a> ·
-  <img src="https://img.shields.io/badge/status-alpha-orange" alt="Alpha">
-</p>
-
 ---
 
 Product analytics, logs, and business data — unified. Track events and funnels. Ingest structured logs. Connect sources like GitHub and Shopify. Query everything. Build dashboards.
