@@ -3,13 +3,11 @@
   <sub>Events, logs, business data — one platform. The full picture.</sub>
 </p>
 
----
+## Quikc install
 
 ```bash
 curl -sSfL https://tell.rs | bash
 ```
-
----
 
 ## Why Tell
 
@@ -24,8 +22,6 @@ Five types of data. Every company generates all five. No tool connects them.
 | **Direction** — north stars, targets | Nowhere | Can't measure what matters |
 
 Tell collects all five. One data model. Everything queryable together.
-
----
 
 ## Platform
 
@@ -43,8 +39,6 @@ Tell collects all five. One data model. Everything queryable together.
 | **Auth** | API keys · JWT/RBAC · OAuth 2.0/PKCE | Workspace isolation |
 | **Audit** | 40 typed actions, zero-copy builder | Every write recorded |
 | **Web** | React + Shadcn dashboards | REST API |
-
----
 
 ## Performance
 
@@ -69,7 +63,6 @@ Tell collects all five. One data model. Everything queryable together.
 | parquet_zstd | 2.3M | **0.10×** |
 | parquet_lz4 | 2.6M | 0.14× |
 
----
 
 ## Compared To
 
@@ -83,13 +76,11 @@ Tell collects all five. One data model. Everything queryable together.
 | Multi-source pipeline | **✓** | — | — | ✓ |
 | Routing + transforms | **✓** | — | — | ✓ |
 | WASM plugins | **✓** | — | — | — |
-| MCP (AI assistants) | **✓** | — | — | — |
+| MCP (AI assistants) | **✓** | ✓ | ✓ | — |
 | CLI (tail, query, ask) | **✓** | — | — | — |
 | Self-host (one binary) | **✓** | Docker | — | ✓ |
 | Throughput | **64M/s** | ~100K/s | — | 86 MiB/s |
 | Language | **Rust** | Python | — | Rust |
-
----
 
 ## SDKs <sub>(all open source)</sub>
 
