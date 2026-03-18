@@ -1,49 +1,73 @@
 <p align="center">
   <strong>Analytics that tell the whole story.</strong><br>
-  <sub>Events, logs, business data — one platform. The full picture.</sub>
+  <sub>Events, metrics, logs, business data — one platform. The full picture.</sub>
 </p>
 
-## Why Tell
-
-Five dimensions of data. One query layer.
-
-- **Events** — what users do
-- **Logs** — what systems do
-- **Signals** — revenue, traffic, spend
-- **Marks** — releases, campaigns, incidents
-- **Direction** — what you're optimizing for
-
-Tell connects all five. Query across them.
-
+<p align="center">
+  <img src="dashboard.webp" alt="Tell dashboard — analytics, AI agent, business data in one view" width="100%">
+</p>
 
 ## Install
+
 ```bash
 curl -sSfL https://tell.rs | bash
 ```
 
-## Platform
+Single Rust binary. Memory-safe, no garbage collector. 64M events/sec. Self-host or use Tell Cloud.
 
-### Data Layer
-- **Events** — Track user actions, page views, sessions, revenue. Custom events with properties. Identify users, group by company, resolve identity across devices.
-- **Logs** — Structured logging with 9 severity levels. Log volume, top logs, drill-down, anomaly detection. First-class, not bolted on.
-- **Plugins** — Connect business tools — Shopify, GitHub, Stripe, Cloudflare, and more. Sandboxed and extensible.
-- **Sources** — TCP, Syslog, HTTP, File, Modbus.
-- **Routing** — Route logs to one place, events to another, internal traffic to archive — all from the same source.
-- **Transforms** — Pattern matching, filtering, PII redaction, log clustering.
-- **Sinks** — ClickHouse, Parquet, Arrow, Disk, and more.
-- **SDKs** — Rust, TypeScript, Go, Swift, Flutter, C++. Track events, identify users, structured logging.
+## What Tell collects
 
-### Product Layer
-- **Analytics** — Funnels, retention cohorts, lifecycle, segments, audiences, group analytics, formulas. Breakdowns by any field. Compare periods. Aggregations: sum, avg, min, max, median, p75–p99 — per event or per user.
-- **Dashboards** — Boards with metrics, charts, and markdown notes. Shareable via URL. Teams with roles.
-- **AI & ML** — Ask questions about your data in natural language. MCP server for AI assistants. Generative UI for LLM-built dashboards. Churn prediction, anomaly detection, auto segmentation, forecasting.
-- **CLI** — Full product from the terminal. Interactive TUI, live streaming, SQL queries, metrics, and plugin management.
-- **Privacy** — GDPR/CCPA compliant. No cookies. PII redaction. All data anonymized.
-- **Auth** — API keys, roles, teams, workspace isolation, OAuth 2.0.
+- **Events** — User actions, page views, sessions, revenue. Custom properties. Identity resolution across devices.
+- **Logs** — Structured logging with 9 severity levels. Anomaly detection. First-class, not bolted on.
+- **Metrics** — Gauges, counters, histograms from agents and SDKs. Label-based breakdown.
+- **Business data** — Pull revenue, ad spend, traffic, and operational data from tools you already use. 15 connectors via sandboxed WASM plugins.
+- **Marks** — Releases, deploys, incidents. Every chart knows what changed.
+
+## How data gets in
+
+- **SDKs** — Rust (80ns/event), TypeScript, Go, Swift, Flutter, C++. Track events, identify users, structured logging.
+- **Sources** — TCP (64M/s), Syslog, HTTP, File, Modbus.
+- **Connectors** — Revenue (Stripe, Shopify), Marketing (Meta Ads, Klaviyo, Bitly), Development (GitHub), Infrastructure (Cloudflare), App Stores (Appbot, AppFigures, and more). Build your own with the plugin SDK.
+
+## What you do with it
+
+- **Analytics** — Funnels, retention cohorts, lifecycle, segments, audiences, group analytics, formulas, first-time math. Breakdowns by any field. Compare periods. Aggregations: sum, avg, min, max, median, p75–p99 — per event or per user.
+- **Dashboards** — Boards with metric cards, charts, and markdown notes. Shareable via URL. Teams with roles.
+- **AI** — Ask questions about your data in natural language. MCP server for AI assistants. Works with any OpenAI-compatible provider. LLM-generated dashboards.
+- **ML** — Churn prediction, anomaly detection, auto segmentation, forecasting. Per-event enrichment. (experimental)
+- **CLI** — Full product from the terminal. Interactive TUI, live streaming, SQL queries, natural language.
+- **Privacy** — GDPR/CCPA compliant. No cookies. PII auto-redaction. All data anonymized.
+- **Auth** — API keys, OAuth 2.0, RBAC, workspace isolation, audit logging.
+
+## How data is processed
+
+- **Routing** — Route logs to one place, events to another, metrics to archive — all from the same source. Content-aware rules. Fan-out to multiple destinations.
+- **Transforms** — Pattern matching (8.1M events/sec), PII redaction (10.9M/sec), filtering, log clustering, automated IP banning.
+- **Signals** — Real-time pub/sub on the pipeline. React to events as they happen. Build automated responses.
+- **Storage** — ClickHouse, Parquet, Arrow-IPC, Vortex, Disk, Forwarder (Tell-to-Tell), Stdout.
+
+## Compared To
+
+| | Tell | PostHog | Mixpanel | Vector |
+|--|:----:|:-------:|:--------:|:------:|
+| Events + funnels | **✓** | ✓ | ✓ | — |
+| Logs | **✓** | ✓ | — | ✓ |
+| Metrics | **✓** | — | — | — |
+| Business connectors | **✓** | — | — | — |
+| Dashboards | **✓** | ✓ | ✓ | — |
+| SDKs | **✓** | ✓ | ✓ | — |
+| AI + MCP | **✓** | ✓ | ✓ | — |
+| Real-time signals | **✓** | — | — | — |
+| Data pipeline | **✓** | — | — | ✓ |
+| Routing + transforms | **✓** | — | — | ✓ |
+| Storage backends | Multiple | ClickHouse | — | ✓ |
+| Self-host | **✓** | Docker | — | ✓ |
+| Throughput | **64M/s** | ~100K/s | — | 86 MiB/s |
+| Language | **Rust** | Python | Go | Rust |
 
 ## Performance
 
-Apple M4 Pro · 12 cores · 5 clients · batch 500<
+Apple M4 Pro · 12 cores · 5 clients · batch 500
 
 ### Ingest throughput (events/sec)
 
@@ -71,32 +95,23 @@ Apple M4 Pro · 12 cores · 5 clients · batch 500<
 
 Ratio = bytes on disk / 1.8 GB input.
 
-## Compared To
-
-| | Tell | PostHog | Mixpanel | Vector |
-|--|:----:|:-------:|:--------:|:------:|
-| Events + funnels | **✓** | ✓ | ✓ | — |
-| Logs | **✓** | — | — | ✓ |
-| Business connectors | **✓** | — | — | — |
-| SDKs (track, identify) | **✓** | ✓ | ✓ | — |
-| Dashboards | **✓** | ✓ | ✓ | — |
-| Multi-source pipeline | **✓** | — | — | ✓ |
-| Routing + transforms | **✓** | — | — | ✓ |
-| WASM plugins | **✓** | — | — | — |
-| MCP (AI assistants) | **✓** | ✓ | ✓ | — |
-| CLI (tail, query, ask) | **✓** | — | — | — |
-| Self-host (one binary) | **✓** | Docker | — | ✓ |
-| Throughput | **64M/s** | ~100K/s | — | 86 MiB/s |
-| Language | **Rust** | Python | — | Rust |
-
 ---
 
-## SDKs (all open source)
+## SDKs (all open source, MIT)
 
-- [**tell-rs**](https://github.com/tell-rs/tell-rs) — Rust
+- [**tell-rs**](https://github.com/tell-rs/tell-rs) — Rust (80ns/event, 10M/s delivered)
 - [**tell-js**](https://github.com/tell-rs/tell-js) — TypeScript
 - [**tell-go**](https://github.com/tell-rs/tell-go) — Go
 - [**tell-cpp**](https://github.com/tell-rs/tell-cpp) — C++
 - [**tell-swift**](https://github.com/tell-rs/tell-swift) — Swift
+- [**sdk-flutter**](https://github.com/tell-rs/sdk-flutter) — Flutter
 
-Built by the founder of Logpoint (European SIEM, acquired)
+## Agent & Tools
+
+- [**witness**](https://github.com/tell-rs/witness) — Host agent for logs + system metrics. 1.2 MB binary (Vector: 46 MB). 76ns/log, 30ns/metric, 4 MB idle memory. MIT.
+- [**signals-sdk**](https://github.com/tell-rs/signals-sdk) — SSE client for Tell's signal bus. Build reactive agents. MIT.
+- [**signals-apps**](https://github.com/tell-rs/signals-apps) — Example apps on signals-sdk. Reference: ip-ban agent.
+
+Built by the founder of Logpoint (European SIEM, acquired).
+
+[Website](https://tell.rs) · [Docs](https://tell.rs/docs) · [Privacy](https://tell.rs/legal/privacy) · [Security](https://tell.rs/legal/security) · [Terms](https://tell.rs/legal/terms)
